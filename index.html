@@ -5,22 +5,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Explore What's Getting in Your Way</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Work+Sans:wght@400;600&display=swap">
 <style>
 /* Design: warm, conversational, grounded — leading with recognizable difficulty and what actually happens */
 
 :root {
-  /* Color palette */
-  --bg: #faf8f5;
-  --fg: #2a2420;
-  --fg-secondary: #5a5550;
-  --accent: #a87c6b;
-  --accent-light: #d4a89e;
-  --border: #e8e4df;
-  --success: #7a9b6d;
+  /* Color palette: drawn from coral peonies (option 2, leaf green + coral) */
+  --bg: #FAF8F6;          /* wall white */
+  --fg: #2B2626;          /* body text */
+  --fg-secondary: #5C5553;
+  --head: #23402E;        /* leaf green: headings, call-to-action band */
+  --accent: #C4533E;      /* deep coral: links, small headings */
+  --accent-light: #E8735C;/* coral */
+  --panel: #FBE3DA;       /* petal blush */
+  --saffron: #E9A21B;     /* small sparks */
+  --border: #F1D2C6;
+  --on-head: #FAF8F6;
 
-  /* Type scale */
-  --font-display: 'Crimson Text', Georgia, serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', Arial, sans-serif;
 
   /* Spacing */
   --space-xs: 0.5rem;
@@ -35,25 +41,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #2a2420;
-    --fg: #faf8f5;
-    --fg-secondary: #d4ccc4;
-    --accent: #d4a89e;
-    --accent-light: #a87c6b;
-    --border: #3d3630;
-    --success: #9fc88a;
+    --bg: #1B211D; --fg: #F2EDEA; --fg-secondary: #C9C0BC; --head: #A9CDB4;
+    --accent: #F08A75; --accent-light: #F5A693; --panel: #2A2420; --saffron: #E9A21B;
+    --border: #3A302B; --on-head: #1B211D;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #2a2420;
-  --fg: #faf8f5;
-  --fg-secondary: #d4ccc4;
-  --accent: #d4a89e;
-  --accent-light: #a87c6b;
-  --border: #3d3630;
-  --success: #9fc88a;
+  --bg: #1B211D; --fg: #F2EDEA; --fg-secondary: #C9C0BC; --head: #A9CDB4;
+  --accent: #F08A75; --accent-light: #F5A693; --panel: #2A2420; --saffron: #E9A21B;
+  --border: #3A302B; --on-head: #1B211D;
   color-scheme: dark;
 }
 
@@ -73,6 +71,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
+  color: var(--head);
   font-weight: 600;
   line-height: 1.3;
   margin: 0;
@@ -111,7 +110,7 @@ a:hover {
 
 .hero h1 {
   margin-bottom: var(--space-md);
-  color: var(--fg);
+  color: var(--head);
 }
 
 .hero p {
@@ -122,7 +121,7 @@ a:hover {
 
 /* Section: Examples / Recognition */
 .examples {
-  background: var(--border);
+  background: var(--panel);
   padding: var(--space-lg);
   border-radius: 0.5rem;
   margin: var(--space-xl) 0;
@@ -137,7 +136,7 @@ a:hover {
 .example-item {
   margin: var(--space-md) 0;
   padding-left: var(--space-md);
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--accent-light);
 }
 
 .example-item p {
@@ -162,7 +161,8 @@ a:hover {
 .what-to-bring {
   margin: var(--space-lg) 0;
   padding: var(--space-lg);
-  background: var(--border);
+  background: var(--panel);
+  border-left: 4px solid var(--saffron);
   border-radius: 0.5rem;
 }
 
@@ -180,27 +180,28 @@ a:hover {
 .cta-section {
   margin: var(--space-xl) 0;
   padding: var(--space-lg);
-  background: var(--accent);
+  background: var(--head);
   border-radius: 0.5rem;
   text-align: center;
 }
 
 .cta-section h2 {
   margin: 0 0 var(--space-md) 0;
-  color: white;
+  color: var(--on-head);
   font-size: 1.5rem;
 }
 
 .cta-section p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--on-head);
+  opacity: 0.9;
   margin: 0 0 var(--space-md) 0;
 }
 
 .btn {
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
-  background: white;
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
@@ -212,8 +213,8 @@ a:hover {
 }
 
 .btn:hover {
-  background: var(--accent-light);
-  color: white;
+  background: var(--fg);
+  color: var(--bg);
   text-decoration: none;
 }
 
