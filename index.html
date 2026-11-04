@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Explore What's Getting in Your Way</title>
+
+<style>
+/* Design: warm, conversational, grounded — leading with recognizable difficulty and what actually happens */
+
+:root {
+  /* Color palette */
+  --bg: #faf8f5;
+  --fg: #2a2420;
+  --fg-secondary: #5a5550;
+  --accent: #a87c6b;
+  --accent-light: #d4a89e;
+  --border: #e8e4df;
+  --success: #7a9b6d;
+
+  /* Type scale */
+  --font-display: 'Crimson Text', Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  color-scheme: light;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #2a2420;
+    --fg: #faf8f5;
+    --fg-secondary: #d4ccc4;
+    --accent: #d4a89e;
+    --accent-light: #a87c6b;
+    --border: #3d3630;
+    --success: #9fc88a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #2a2420;
+  --fg: #faf8f5;
+  --fg-secondary: #d4ccc4;
+  --accent: #d4a89e;
+  --accent-light: #a87c6b;
+  --border: #3d3630;
+  --success: #9fc88a;
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; }
+
+img { max-width: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 0 var(--space-md);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; margin-top: var(--space-xl); }
+h3 { font-size: 1.125rem; color: var(--accent); }
+
+p { margin: var(--space-md) 0; }
+p:first-of-type { margin-top: 0; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 0.12em;
+}
+
+a:hover {
+  color: var(--accent-light);
+}
+
+/* Layout: single column, generous spacing */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--space-lg) 0;
+}
+
+/* Hero */
+.hero {
+  padding: var(--space-xl) 0;
+}
+
+.hero h1 {
+  margin-bottom: var(--space-md);
+  color: var(--fg);
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: var(--fg-secondary);
+  margin: 0;
+}
+
+/* Section: Examples / Recognition */
+.examples {
+  background: var(--border);
+  padding: var(--space-lg);
+  border-radius: 0.5rem;
+  margin: var(--space-xl) 0;
+}
+
+.examples h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+}
+
+.example-item {
+  margin: var(--space-md) 0;
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--accent);
+}
+
+.example-item p {
+  margin: var(--space-sm) 0 0 0;
+  color: var(--fg-secondary);
+  font-size: 0.95rem;
+}
+
+/* Section: What happens */
+.process {
+  padding: var(--space-lg) 0;
+}
+
+.process h2 {
+  margin-top: var(--space-lg);
+}
+
+.process p {
+  color: var(--fg-secondary);
+}
+
+.what-to-bring {
+  margin: var(--space-lg) 0;
+  padding: var(--space-lg);
+  background: var(--border);
+  border-radius: 0.5rem;
+}
+
+.what-to-bring h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+}
+
+.what-to-bring p {
+  margin: var(--space-sm) 0;
+  font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta-section {
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg);
+  background: var(--accent);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.cta-section h2 {
+  margin: 0 0 var(--space-md) 0;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.cta-section p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  background: white;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--accent-light);
+  color: white;
+  text-decoration: none;
+}
+
+/* Footer */
+.footer {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--fg-secondary);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.25rem; }
+
+  .hero {
+    padding: var(--space-lg) 0;
+  }
+
+  body {
+    padding: 0 var(--space-sm);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <h1>Bring a real difficulty.</h1>
+    <p>We'll explore what's happening and find a way forward that actually fits how you work.</p>
+  </section>
+
+  <section class="examples">
+    <h2>Does one of these sound familiar?</h2>
+
+    <div class="example-item">
+      <p><strong>You keep putting off something important,</strong> even though you want it done.</p>
+    </div>
+
+    <div class="example-item">
+      <p><strong>You have several lists and plenty to do,</strong> but can't tell what deserves your attention.</p>
+    </div>
+
+    <div class="example-item">
+      <p><strong>You're working on a project,</strong> but keep getting tangled up or losing momentum.</p>
+    </div>
+
+    <div class="example-item">
+      <p><strong>You can't relax</strong> because there always seems to be something you should be doing.</p>
+    </div>
+  </section>
+
+  <section class="process">
+    <h2>What happens in a call</h2>
+
+    <p>You bring one recent situation where you're stuck. Not a neatly defined problem—just something that's harder than you think it should be, and your attempts to fix it haven't helped enough.</p>
+
+    <p>We spend the session investigating. I'm not here to deliver a productivity tip or convince you that discipline is the answer. I'm here to understand what's actually happening: what you're trying to do, what gets in the way, what you've already tried. We'll look at it together.</p>
+
+    <p>Depending on what comes up, we might do a small piece of useful work right there—something you can take away and use. You'll see how I approach the problem: what I'm paying attention to, how I think about it, what I'd suggest trying.</p>
+
+    <div class="what-to-bring">
+      <h3>What to know before we talk</h3>
+      <p>This is a free 30-minute session. I won't promise a breakthrough or claim I can fix everything in that time. What I can do is help you understand what's happening and explore whether my approach might be useful for you.</p>
+      <p>You don't need to prepare or arrive with a solution. You don't even need to know what the real problem is. That's what we investigate together.</p>
+    </div>
+
+    <p>If it feels like a fit, we can talk about next steps. If it doesn't, you'll still have spent some time understanding your situation better.</p>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to explore?</h2>
+    <p>Book a free 30-minute call. Come with something real that's getting in your way.</p>
+    <a href="https://calendly.com/alightholder/evaluation-for-agile-adhd-coaching" class="btn">Schedule a call</a>
+  </section>
+
+  <footer class="footer">
+    <p>Agile4ADHD coaching with Amy Lightholder</p>
+    <p>For people who work differently.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
